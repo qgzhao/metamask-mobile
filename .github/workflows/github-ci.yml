@@ -8,8 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     container: reactnativecommunity/react-native-android
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout
     - name: Envinfo
       run: npx envinfo
     - name: Build application
-      run: yarn install && cd android && chmod +x gradlew && ./gradlew assembleRelease
+      run: yarn install && yarn start:android
