@@ -119,9 +119,9 @@ jobs:
           command: (echo y; echo y; echo y; echo y; echo y; echo y) | $ANDROID_HOME/tools/bin/sdkmanager --licenses
       - run: 
           name: build:release
-          command: yarn build:android:release
+          command: METAMASK_ENVIRONMENT='production' yarn build:android:release
 #       - run:
-#           name: build:pre-release
+#           name:  build:pre-release
 #           command:
 #             |
 #               METAMASK_ENVIRONMENT='prerelease' yarn build:android:pre-release:bundle
