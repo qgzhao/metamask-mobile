@@ -154,21 +154,21 @@ jobs:
 workflows:
   full_test:
     jobs:
-#       - prep-deps:
-#           filters:
-#             branches:
-#               only:
-#                 - master
-#                 - develop
-#       - prep-node-deps:
-#           filters:
-#             branches:
-#               ignore:
-#                 - master
-#                 - develop
-#       - lint:
-#           requires:
-#             - prep-node-deps
+      - prep-deps:
+          filters:
+            branches:
+              only:
+                - master
+                - develop
+      - prep-node-deps:
+          filters:
+            branches:
+              ignore:
+                - master
+                - develop
+      - lint:
+          requires:
+            - prep-node-deps
 #       - test-unit:
 #           requires:
             - prep-node-deps
