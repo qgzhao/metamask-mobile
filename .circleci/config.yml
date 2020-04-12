@@ -117,23 +117,26 @@ jobs:
       - run:
           name: build:accept-android-licenses
           command: (echo y; echo y; echo y; echo y; echo y; echo y) | $ANDROID_HOME/tools/bin/sdkmanager --licenses
-      - run:
-          name: build:pre-release
-          command:
-            |
-              METAMASK_ENVIRONMENT='prerelease' yarn build:android:pre-release:bundle
-      - store_artifacts:
-          path: android/app/build/outputs/bundle/release
-          destination: bundle
-      - store_artifacts:
-          path: android/app/build/outputs/apk/release
-          destination: builds
-      - store_artifacts:
-          path: sourcemaps/android
-          destination: sourcemaps-android
-      - run:
-          name: Announcing pre-release
-          command: yarn build:announce
+      - run: 
+          name: build:release
+          command: yarn build:android:release
+#       - run:
+#           name: build:pre-release
+#           command:
+#             |
+#               METAMASK_ENVIRONMENT='prerelease' yarn build:android:pre-release:bundle
+#       - store_artifacts:
+#           path: android/app/build/outputs/bundle/release
+#           destination: bundle
+#       - store_artifacts:
+#           path: android/app/build/outputs/apk/release
+#           destination: builds
+#       - store_artifacts:
+#           path: sourcemaps/android
+#           destination: sourcemaps-android
+#       - run:
+#           name: Announcing pre-release
+#           command: yarn build:announce
   publish-pre-release-ios:
     macos:
       xcode: 11.2.1
